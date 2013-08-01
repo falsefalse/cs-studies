@@ -141,15 +141,14 @@ List.prototype.remove = function(index) {
     }
 
     var count = 1,
-        prevP = this._head, currentP = this._head.next, nextP = null;
+        prevP = this._head, currentP = this._head.next;
 
     while (currentP) {
-        nextP = currentP.next;
         if (count === index) {
-            prevP.next = nextP;
+            prevP.next = currentP.next;
             // removing the last one - update the _tail
-            // nextP would be `null` in this case, so we're good with prev-prev. line
-            if (!nextP)
+            // prevP.next would be `null` in this case, so we're good, at the last item
+            if (!prevP.next)
                 this._tail = prevP;
 
             return currentP.value;
