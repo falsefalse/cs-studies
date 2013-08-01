@@ -89,7 +89,6 @@ List.prototype.insert = function(index, value) {
     var count = 1, prevP = this._head, currentP = this._head.next,
         item = newItem(value);
     while (currentP) {
-        console.log('--count', count)
         if (index === count) {
             prevP.next = item;
             item.next = currentP;
