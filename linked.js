@@ -163,6 +163,15 @@ List.prototype.remove = function(index) {
     return null;
 };
 
+List.prototype.printAll = function(node) {
+    function printOneR(node) {
+        if (!node) return;
+        console.log(node.value);
+        printOneR(node.next);
+    }
+    printOneR(this._head);
+}
+
 module.exports.List = List;
 // run tests right away, hate to switch tabs for that
 require('./linked_tests.js');

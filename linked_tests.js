@@ -110,3 +110,8 @@ while ( !list.isEmpty() ) {
     console.log('popping:', list.pop());
 }
 
+list.empty();
+list.printAll()
+
+_fill(list);
+list.printAll();
