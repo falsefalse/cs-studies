@@ -1,9 +1,10 @@
 // tower of hanoi solwer
 
 function tower (discs) {
-    var moves = 0;
     function _move (n, from, to) {
-        console.log('move "%s" from "%s" to "%s"', n, from, to);
+        // console.log('move "%s" from "%s" to "%s"', n, from, to);
+        check[to].push( check[from].pop() );
+        console.log(check)
         moves++;
     }
 
@@ -19,6 +20,19 @@ function tower (discs) {
 
         return moves;
     }
+
+    var moves = 0,
+        count = discs,
+        check = {
+            source: [],
+            destination: [],
+            alt: []
+        };
+    while (count--) {
+        check.source.push(count + 1);
+    }
+
+    console.log('Solving: ', check.source);
     return move(discs, 'source', 'destination', 'alt');
 }
 
