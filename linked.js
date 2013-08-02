@@ -165,4 +165,4 @@ List.prototype.remove = function(index) {
 
 module.exports.List = List;
 // run tests right away, hate to switch tabs for that
-var test = require('./linked_tests.js');
+require('./linked_tests.js');
