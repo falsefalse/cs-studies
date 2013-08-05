@@ -17,11 +17,19 @@ function shuffle(array) {
 
 var Sort = require('./sort.js');
 
-var a = [7,6,5,4,3,2,1, 8];
+var a = [8,7,6,5,4,3,2,1, 8], s = shuffle(a);
+s = s.concat( shuffle(a) ).concat( shuffle(a) ).concat( shuffle(a) ).concat( shuffle(a) );
+
+// console.log( Sort.merge(a) );
+
+console.log( a.toString() );
 console.log( Sort.insertion(a) );
-console.log()
-var s = shuffle(a);
-console.log( s.toString(), Sort.insertion( s ) );
+console.log(Sort.insertion._swaps, a.length)
+
+console.log();
+console.log( s.toString() );
+console.log( Sort.insertion( s ).join(', ') );
+console.log(Sort.insertion._swaps, s.length);
 
 // console.log( Sort.quick(a) );
 // console.log( Sort.merge(a) );
