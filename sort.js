@@ -28,7 +28,59 @@ function quick(array) {
 }
 
 function merge(array) {
-    return array;
+    function _merge(array, start1, end1, start2, end2) {
+        var i1 = start1, i2 = start2, result = [],
+            left, right;
+        console.log('_merge', start1, end1, start2, end2);
+
+        var result = [];
+        while (start1 <= end1 || start2 <= end2) {
+            left = array[start1];
+            right = array[start2];
+
+            // shortcircuit to the opposite part
+            // when we're out of values
+            if (start1 > end1) left = +Infinity;
+            if (start2 > end2) right = +Infinity;
+
+            if (left <= right) {
+                result.push(left);
+                start1++;
+            } else {
+                result.push(right);
+                start2++;
+            }
+        }
+
+        return result;
+    }
+    function _sort(array, start, end) {
+        // got 2 items, swap and return up
+        if (start + 1 == end) {
+            var temp = array[end];
+            if (array[start] > array[end]) {
+                array[end] = array[start];
+                array[start] = temp;
+            }
+            return;
+        }
+
+        var middle = Math.floor((start + end) / 2);
+        // sort fist part
+        _sort(array, start, middle);
+        // 2nd part needs sorting if it has more than one item
+        // otherwise _merge cares about 2+1 case
+        if (middle + 1 < end) {
+            _sort(array, middle + 1, end);
+        }
+
+        var merged = _merge(array, start, middle, middle + 1, end);
+        // copy merged values over to the array
+        [].splice.apply(array, [start, merged.length].concat(merged));
+        return array;
+    }
+
+    return _sort(array, 0, array.length - 1);
 }
 
 module.exports = {

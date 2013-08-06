@@ -1,5 +1,7 @@
 // let us test sorting
 
+var Sort = require('./sort.js');
+
 function shuffle(array) {
   var shuffled = [], rand, i, value;
   for (i = 0; i < array.length; i++) {
@@ -15,16 +17,46 @@ function shuffle(array) {
   return shuffled;
 };
 
-var Sort = require('./sort.js');
+var a, b, c, d, s = [], l = [];
+function _fill () {
+  a = [88, 8,7,6,5,4,3,2,1];
+  b = [1,2,3,4,5];
+  c = [0,1,3];
+  d = [8,7,6,5,4,3,14];
 
-var a = [8,7,6,5,4,3,2,1, 8], s = shuffle(a);
-s = s.concat( shuffle(a) ).concat( shuffle(a) ).concat( shuffle(a) ).concat( shuffle(a) );
+  s = shuffle(a);
 
-// console.log( Sort.merge(a) );
+  l = []
+    .concat( shuffle(a) )
+    .concat( shuffle(a) )
+    .concat( shuffle(b) )
+    .concat( shuffle(b) )
+    .concat( shuffle(c) )
+    .concat( shuffle(c) )
+    .concat( shuffle(d) )
+    .concat( shuffle(d) )
+  ;
+}
 
+console.log('== Merge sort')
+
+_fill();
+console.log( a.toString(), a.length );
+console.log( Sort.merge(a) );
+console.log();
+
+_fill();
+console.log( l.toString(), l.length );
+console.log( Sort.merge(l).join(', ') );
+console.log();
+
+console.log('== Insertion sort')
+
+_fill();
 console.log( a.toString() );
 console.log( Sort.insertion(a) );
 console.log(Sort.insertion._swaps, a.length)
+console.log();
 
 console.log();
 console.log( s.toString() );
