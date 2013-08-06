@@ -58,10 +58,11 @@ console.log( Sort.insertion(a) );
 console.log(Sort.insertion._swaps, a.length)
 console.log();
 
+_fill();
+console.log( l.toString() );
+console.log( Sort.insertion( l ).join(', ') );
+console.log(Sort.insertion._swaps, l.length);
 console.log();
-console.log( s.toString() );
-console.log( Sort.insertion( s ).join(', ') );
-console.log(Sort.insertion._swaps, s.length);
 
 // console.log( Sort.quick(a) );
 // console.log( Sort.merge(a) );
