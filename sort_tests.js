@@ -37,26 +37,31 @@ function _fill () {
         .concat( shuffle(d) )
     ;
 }
+function _test(fn, array) {
+    var source = [].concat(array),
+        sorted = fn(array);
+
+    console.log('[ %s ], %s', source.join(', ') , source.length );
+    console.log('[ %s ], %s', sorted.join(', ') , sorted.length );
+}
 
 console.log('== Merge sort')
-
 _fill();
-console.log( a.toString(), a.length );
-console.log( Sort.merge(a) );
-console.log();
-
-_fill();
-console.log( l.toString(), l.length );
-console.log( Sort.merge(l).join(', ') );
-console.log();
+[a,b,c,d,s,l].forEach(function(array) {
+    _test(Sort.merge, array);
+    console.log('Merges %s, stack: %s', Sort.merge._merges, Sort.merge._stack);
+    console.log();
+});
 
 console.log('== Insertion sort')
-
 _fill();
-console.log( a.toString() );
-console.log( Sort.insertion(a) );
-console.log(Sort.insertion._swaps, a.length)
-console.log();
+[a,b,c,d,s,l].forEach(function(array) {
+    _test(Sort.insertion, array)
+    console.log('Swaps made:', Sort.insertion._swaps);
+    console.log();
+});
+
+
 
 _fill();
 console.log( l.toString() );
