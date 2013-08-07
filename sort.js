@@ -28,10 +28,13 @@ function quick(array) {
 }
 
 function merge(array) {
+    merge._merges = 0;
+    merge._stack = 0;
     function _merge(array, start1, end1, start2, end2) {
+        merge._merges++;
         var i1 = start1, i2 = start2, result = [],
             left, right;
-        console.log('_merge', start1, end1, start2, end2);
+        // console.log('_merge', start1, end1, start2, end2);
 
         var result = [];
         while (start1 <= end1 || start2 <= end2) {
@@ -55,6 +58,8 @@ function merge(array) {
         return result;
     }
     function _sort(array, start, end) {
+        merge._stack++;
+
         // got 2 items, swap and return up
         if (start + 1 == end) {
             var temp = array[end];
