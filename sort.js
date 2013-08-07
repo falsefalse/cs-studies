@@ -17,7 +17,6 @@ function insertion(array) {
         }
         // put the current value before the first sorted item (array[hole])
         // note that hole is decremented at the end of while loop
-        // thus m
         array[hole] = value;
     };
     return array;
