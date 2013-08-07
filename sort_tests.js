@@ -49,7 +49,7 @@ console.log('== Merge sort')
 _fill();
 [a,b,c,d,s,l].forEach(function(array) {
     _test(Sort.merge, array);
-    console.log('Merges %s, stack: %s', Sort.merge._merges, Sort.merge._stack);
+    console.log('merges %s, stack: %s', Sort.merge._merges, Sort.merge._stack);
     console.log();
 });
 
@@ -57,7 +57,7 @@ console.log('== Insertion sort')
 _fill();
 [a,b,c,d,s,l].forEach(function(array) {
     _test(Sort.insertion, array)
-    console.log('Swaps made:', Sort.insertion._swaps);
+    console.log('swaps: %s', Sort.insertion._swaps);
     console.log();
 });
 
