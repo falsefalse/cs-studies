@@ -61,13 +61,10 @@ _fill();
     console.log();
 });
 
-
-
+console.log('== Quick sort')
 _fill();
-console.log( l.toString() );
-console.log( Sort.insertion( l ).join(', ') );
-console.log(Sort.insertion._swaps, l.length);
-console.log();
-
-// console.log( Sort.quick(a) );
-// console.log( Sort.merge(a) );
+[a,b,c,d,s,l].forEach(function(array) {
+    _test(Sort.quick, array)
+    console.log('swaps: %s, stack: %s', Sort.quick._swaps, Sort.quick._stack);
+    console.log();
+});

@@ -24,7 +24,51 @@ function insertion(array) {
 }
 
 function quick(array) {
-    return array;
+    quick._swaps = 0;
+    quick._stack = 0;
+    function _swap(array, left, right) {
+        var tmp = array[right];
+        array[right] = array[left];
+        array[left] = tmp;
+        quick._swaps++;
+    }
+    function _partition(array, start, end, pivot) {
+        var value = array[pivot];
+        _swap(array, pivot, end);
+        var left = start, right = end - 1;
+
+        while (left <= right) {
+            while (array[left] <= value && left <= right) {
+                left++;
+            }
+
+            while (array[right] >= value && left <= right) {
+                right--;
+            }
+
+            if (left < right) {
+                _swap(array, left, right);
+            }
+        }
+        // put the pivot after the biggest sorted element
+        _swap(array, right + 1, end);
+        // return this pivot index, it will be used to sort left and right parts further
+        return right + 1;
+    }
+    function _sort(array, start, end) {
+        quick._stack++;
+        if (start >= end) return;
+
+        var pivot = Math.floor((start + end) / 2);
+        var index = _partition(array, start, end, pivot);
+
+        _sort(array, start, index - 1);
+        _sort(array, index + 1 , end);
+
+        return array;
+    }
+
+    return _sort(array, 0, array.length - 1);
 }
 
 function merge(array) {
