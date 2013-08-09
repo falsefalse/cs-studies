@@ -1,21 +1,5 @@
 // http://community.topcoder.com/stat?c=problem_statement&pm=3935&rd=6532
 
-var Queue = function() {
-    this._list = [];
-};
-Queue.prototype.push = function(obj) {
-    return this._list.push(obj);
-};
-Queue.prototype.pop = function() {
-    return this._list.shift();
-};
-Queue.prototype.isEmpty = function() {
-    return this._list.length === 0;
-};
-Queue.prototype.sort = function(fn) {
-    return this._list = this._list.sort(fn);
-};
-
 var Node = function(string) {
     this._string = string;
     this.steps = 0;
@@ -108,10 +92,10 @@ function smartWords(start, finish, forbiddens) {
         else                     return  0;
     };
 
-    var queue = new Queue(), item, visited = {};
+    var queue = [], item;
     queue.push( new Node(start) );
-    while (!queue.isEmpty()) {
-        item = queue.pop();
+    while (queue.length > 0) {
+        item = queue.shift();
 
         if (item.toString() == finish) return item.steps;
 
@@ -122,7 +106,7 @@ function smartWords(start, finish, forbiddens) {
             sibling.steps = item.steps + 1;
         }
         // suboptimal, can do better sorting the queue manually on inserts
-        queue.sort(sortByDistance);
+        queue = queue.sort(sortByDistance);
     }
     return -1;
 }
