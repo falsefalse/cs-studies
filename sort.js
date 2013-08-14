@@ -77,7 +77,8 @@ function merge(array) {
         merge._merges++;
         var i1 = start1, i2 = start2, result = [],
             left, right;
-        // console.log('_merge', start1, end1, start2, end2);
+        // console.log('_merge', array.slice(start1, end1 + 1),
+        //              array.slice(start2, end2 + 1));
 
         var result = [];
         while (start1 <= end1 || start2 <= end2) {
@@ -102,6 +103,8 @@ function merge(array) {
     }
     function _sort(array, start, end) {
         merge._stack++;
+
+        // console.log('_sort', array.slice(start, end + 1));
 
         // got 2 items, swap and return up
         if (start + 1 == end) {
