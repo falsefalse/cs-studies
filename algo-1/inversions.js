@@ -11,8 +11,11 @@ array.pop();
 var A = [3,1,5,4,2,6];
 var B = [6,5,4,3,2,1];
 
-console.log( sort.merge( A ), sort.merge._inversions, sort.merge._stack, sort.merge._merges );
+sort.merge( A );
+console.log( sort.merge._inversions, sort.merge._stack, sort.merge._merges );
 console.log()
-console.log( sort.merge( B ), sort.merge._inversions, sort.merge._stack, sort.merge._merges );
+sort.merge( B );
+console.log( sort.merge._inversions, sort.merge._stack, sort.merge._merges );
 console.log()
-console.log( sort.merge( array ), sort.merge._inversions, sort.merge._stack, sort.merge._merges );
+sort.merge( array );
+console.log( sort.merge._inversions, sort.merge._stack, sort.merge._merges );
