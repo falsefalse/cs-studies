@@ -73,6 +73,8 @@ function quick(array) {
 function merge(array) {
     merge._merges = 0;
     merge._stack = 0;
+    merge._inversions = 0;
+
     function _merge(array, start1, end1, start2, end2) {
         merge._merges++;
         var i1 = start1, i2 = start2, result = [],
@@ -94,6 +96,10 @@ function merge(array) {
                 result.push(left);
                 start1++;
             } else {
+                if (start1 <= end1) {
+                    merge._inversions += end1 - start1 + 1;
+                }
+                // console.log ('pushing 2nd', start1, end1)
                 result.push(right);
                 start2++;
             }
@@ -112,6 +118,7 @@ function merge(array) {
             if (array[start] > array[end]) {
                 array[end] = array[start];
                 array[start] = temp;
+                merge._inversions++;
             }
             return;
         }
