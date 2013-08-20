@@ -22,10 +22,14 @@ function insertion(array) {
     return array;
 }
 
-function quick(array) {
+function quick(array, choosePivot) {
     quick._swaps = 0;
     quick._comps = 0;
     quick._stack = 0;
+
+    choosePivot = choosePivot || function(start, end) {
+        return Math.floor((start + end) / 2)
+    }
 
     function _swap(array, left, right) {
         var tmp = array[right];
@@ -43,7 +47,7 @@ function quick(array) {
         while (++j <= end) {
             if (array[j] <= value) {
                 _swap(array, j, p);
-                p++
+                p++;
             }
         }
         quick._comps += (end - start);
@@ -56,11 +60,11 @@ function quick(array) {
         quick._stack++;
         if (start >= end) return;
 
-        var pivot = Math.floor((start + end) / 2);
-        var index = _partition(array, start, end, pivot);
+        var pivot = _partition( array, start, end, choosePivot(start, end) );
 
-        _sort(array, start, index - 1);
-        _sort(array, index + 1 , end);
+        // pivot is in sorted position after partitioning
+        _sort(array, start, pivot - 1);
+        _sort(array, pivot + 1 , end);
 
         return array;
     }
