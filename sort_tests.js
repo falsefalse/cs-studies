@@ -65,6 +65,7 @@ console.log('== Quick sort')
 _fill();
 [a,b,c,d,s,l].forEach(function(array) {
     _test(Sort.quick, array)
-    console.log('swaps: %s, stack: %s', Sort.quick._swaps, Sort.quick._stack);
+    console.log('comparisons: %s, swaps: %s, stack: %s',
+                Sort.quick._comps, Sort.quick._swaps, Sort.quick._stack);
     console.log();
 });

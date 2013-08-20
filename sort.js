@@ -24,7 +24,9 @@ function insertion(array) {
 
 function quick(array) {
     quick._swaps = 0;
+    quick._comps = 0;
     quick._stack = 0;
+
     function _swap(array, left, right) {
         var tmp = array[right];
         array[right] = array[left];
@@ -44,6 +46,7 @@ function quick(array) {
                 p++
             }
         }
+        quick._comps += (end - start);
         // put the pivot after the biggest sorted element
         _swap(array, start, p - 1);
         // return this pivot index, it will be used to sort left and right parts further
