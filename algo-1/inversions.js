@@ -2,7 +2,7 @@ var fs = require('fs'),
     sort = require('../sort.js')
 
 var array = fs
-    .readFileSync('./algo-1/IntegerArray.txt', 'utf-8')
+    .readFileSync('./algo-1/inversions.txt', 'utf-8')
         .split('\r\n')
             .map(function(i) { return parseInt(i, 10) });
 // new line at the end of file
