@@ -58,10 +58,24 @@ sort.quick( array, function(start, end) {
 console.log( 'median: ', sort.quick._comps, sort.quick._swaps, sort.quick._stack );
 console.log();
 
-array = [].concat(origin);
-sort.quick( array, function(start, end) {
-    var p = start + Math.floor( Math.random() * (end - start) );
-    return p;
-} );
-console.log( 'random: ', sort.quick._comps, sort.quick._swaps, sort.quick._stack );
-console.log();
+var r = [];
+while (r.length < 100) {
+    array = [].concat(origin);
+    sort.quick( array, function(start, end) {
+        var p = start + Math.floor( Math.random() * (end - start) );
+        return p;
+    } );
+    r.push([sort.quick._comps, sort.quick._swaps, sort.quick._stack])
+}
+console.log (
+    '%s randoms: %s', r.length, r.reduce(function(prev, current, index) {
+        if (!prev) {
+            prev = new Array(3);
+        }
+        prev[0] += current[0];
+        prev[1] += current[1];
+        prev[2] += current[2];
+        return prev;
+    })
+    .map(function(i) { return ~~(i / r.length); })
+)
