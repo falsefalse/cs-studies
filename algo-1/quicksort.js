@@ -57,3 +57,11 @@ sort.quick( array, function(start, end) {
 } );
 console.log( 'median: ', sort.quick._comps, sort.quick._swaps, sort.quick._stack );
 console.log();
+
+array = [].concat(origin);
+sort.quick( array, function(start, end) {
+    var p = start + Math.floor( Math.random() * (end - start) );
+    return p;
+} );
+console.log( 'random: ', sort.quick._comps, sort.quick._swaps, sort.quick._stack );
+console.log();
