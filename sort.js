@@ -33,26 +33,21 @@ function quick(array) {
     }
     function _partition(array, start, end, pivot) {
         var value = array[pivot];
-        _swap(array, pivot, end);
-        var left = start, right = end - 1;
+        _swap(array, pivot, start);
 
-        while (left <= right) {
-            while (array[left] <= value && left <= right) {
-                left++;
-            }
+        // j - end of partitioned, p - pivot position
+        var j = start, p = start + 1;
 
-            while (array[right] >= value && left <= right) {
-                right--;
-            }
-
-            if (left < right) {
-                _swap(array, left, right);
+        while (++j <= end) {
+            if (array[j] <= value) {
+                _swap(array, j, p);
+                p++
             }
         }
         // put the pivot after the biggest sorted element
-        _swap(array, right + 1, end);
+        _swap(array, start, p - 1);
         // return this pivot index, it will be used to sort left and right parts further
-        return right + 1;
+        return p - 1;
     }
     function _sort(array, start, end) {
         quick._stack++;
